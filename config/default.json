@@ -1,6 +1,7 @@
 {
   "name": "Express Application",
-  "jwtPrivateKey": "",
+  "jwtPrivateKey": "unsecureString",
   "db": "mongodb://localhost/vidly",
-  "requiresAuth": true
+  "requiresAuth": true,
+  "port": 3900
 }
