@@ -12,12 +12,14 @@ router.get("/get_author", async (req, res) => {
   // Data is retrieved from the json web token
   console.log("Called Get Author");
 
+  // Access the provided 'page' and 'limt' query parameters
+  let author = req.query.author;
   const pool = new Pool({
     connectionString: connectionString
   });
 
   let result = await pool.query(
-    "SELECT S.* FROM sma S, article_authors A WHERE S.id = A.article_id AND A.author_name LIKE '%Carlos Penilla%'"
+    `SELECT S.* FROM sma S, article_authors A WHERE S.id = A.article_id AND A.author_name LIKE '%${author}%'`
   );
 
   let articles = [];
@@ -25,6 +27,8 @@ router.get("/get_author", async (req, res) => {
   for (var i = 0; i < result.rows.length; i++) {
     const article = result.rows[i];
     const article_id = article.id;
+
+    articles.push(article_id);
 
     let cites = await pool.query(
       // `SELECT S.* FROM sma S, (SELECT C.* FROM cites C WHERE C.article_id = ${article_id}) C WHERE S.id = C.cites_article_id`
@@ -56,9 +60,24 @@ router.get("/get_author", async (req, res) => {
       articles.push(id);
       links.push({ source: article_id, target: id });
     }
-
-    res.send({ articles, links });
   }
+  const nodes = articles.map(id => {
+    return { id: id };
+  });
+
+  console.log("#Nodes: ", nodes.length);
+  console.log("#Links: ", links.length);
+  const simulation = d3
+    .forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(d => d.id))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(0, 0));
+
+  simulation.on("end", () => {
+    console.log("--------------SIMULATION END---------------");
+    // if (!res.headersSent)
+    res.send({ nodes, links });
+  });
 
   // const client = new Client({
   //   connectionString: connectionString
