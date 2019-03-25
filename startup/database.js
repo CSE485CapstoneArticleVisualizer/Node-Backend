@@ -4,11 +4,11 @@ const dbDebugger = require('debug')('app:db');
 const config = require('config')
 
 module.exports = function() {
-    const db = config.get('db')
-    mongoose.connect(db, { useNewUrlParser: true }) // Conenct to the playground database
-    .then(() => {
-        dbDebugger(`Connected to the $(db) database!`);
-        winston.info(`Connected to ${db}`);
-    });
+    // const db = config.get('db')
+    // mongoose.connect(db, { useNewUrlParser: true }) // Conenct to the playground database
+    // .then(() => {
+    //     dbDebugger(`Connected to the $(db) database!`);
+    //     winston.info(`Connected to ${db}`);
+    // });
 }
 
