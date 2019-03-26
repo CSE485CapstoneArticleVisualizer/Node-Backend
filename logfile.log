@@ -4,3 +4,27 @@
 {"message":"Morgan enabled...","level":"info"}
 {"message":"Listening to port 3900","level":"info"}
 {"message":"Connected to mongodb://localhost/vidly","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - connect ECONNREFUSED 127.0.0.1:5434 - /api/users/get_author?author=Alex - GET - ::ffff:127.0.0.1\nStack Trace:\nError: connect ECONNREFUSED 127.0.0.1:5434\n    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1117:14)","level":"error"}
+{"message":"500 - nodes is not defined - /api/users/get_author?author=Alex - GET - ::ffff:127.0.0.1\nStack Trace:\nReferenceError: nodes is not defined\n    at router.get (C:\\Users\\alexn\\Projects\\Node-Backend\\routes\\users.js:65:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)","level":"error"}
+{"message":"500 - nodes is not defined - /api/users/get_author?author=Alex - GET - ::ffff:127.0.0.1\nStack Trace:\nReferenceError: nodes is not defined\n    at router.get (C:\\Users\\alexn\\Projects\\Node-Backend\\routes\\users.js:65:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
