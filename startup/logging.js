@@ -23,7 +23,7 @@ module.exports = function (app) {
 
     // Hack to handle rejections as an exception
     process.on('unhandledRejection', (rej) => {
-        throw ex;
+        throw rej;
     })
 
     // Add file transport and mongodb transport
