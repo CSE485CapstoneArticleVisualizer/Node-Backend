@@ -19,7 +19,7 @@ router.get("/get_author", async (req, res) => {
   });
 
   let result = await pool.query(
-    `SELECT S.* FROM sma S, article_authors A WHERE S.id = A.article_id AND A.author_name LIKE '%${author}%'`
+    `SELECT S.* FROM sma S, article_authors A WHERE S.id = A.article_id AND A.author_name LIKE '%${author}%' LIMIT 10`
   );
 
   let articles = [];
@@ -35,7 +35,7 @@ router.get("/get_author", async (req, res) => {
       `SELECT S.* 
                   FROM sma S, 
                   (SELECT C.* FROM cited_by C WHERE C.article_id = ${article_id}) C 
-                  WHERE S.id = C.cited_by_id`
+                  WHERE S.id = C.cited_by_id LIMIT 10`
     );
 
     for (var j = 0; j < cites.rows.length; j++) {
@@ -61,23 +61,25 @@ router.get("/get_author", async (req, res) => {
       links.push({ source: article_id, target: id });
     }
   }
-  const nodes = articles.map(id => {
-    return { id: id };
-  });
 
-  console.log("#Nodes: ", nodes.length);
+  console.log("#Nodes: ", articles.length);
   console.log("#Links: ", links.length);
-  const simulation = d3
-    .forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id(d => d.id))
-    .force("charge", d3.forceManyBody())
-    .force("center", d3.forceCenter(0, 0));
+  //******************************************************* */
+  // const nodes = articles.map(id => {
+  //   return { id: id };
+  // });
+  // const simulation = d3
+  //   .forceSimulation(nodes)
+  //   .force("link", d3.forceLink(links).id(d => d.id))
+  //   .force("charge", d3.forceManyBody())
+  //   .force("center", d3.forceCenter(0, 0));
 
-  simulation.on("end", () => {
-    console.log("--------------SIMULATION END---------------");
-    // if (!res.headersSent)
-    res.send({ nodes, links });
-  });
+  // simulation.on("end", () => {
+  //   console.log("--------------SIMULATION END---------------");
+  //   // if (!res.headersSent)
+  //   res.send({ nodes, links });
+  // });
+  //******************************************************* */
 
   // const client = new Client({
   //   connectionString: connectionString
@@ -89,8 +91,7 @@ router.get("/get_author", async (req, res) => {
   //   client.end();
   // });
 
-  // const user = await User.findById(req.user._id).select("-password"); // Exclude the password property
-  // res.send(user);
+  res.send({ articles, links });
 });
 
 router.get("/me", async (req, res) => {
