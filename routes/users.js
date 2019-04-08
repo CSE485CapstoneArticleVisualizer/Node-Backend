@@ -8,6 +8,7 @@ const { Pool, Client } = require("pg");
 const connectionString = "postgresql://stephen:stephen@localhost:5434/stephen";
 const d3 = require("d3");
 
+//Get Author
 router.get("/get_author", async (req, res) => {
   // Data is retrieved from the json web token
   console.log("Called Get Author");
@@ -19,7 +20,182 @@ router.get("/get_author", async (req, res) => {
   });
 
   let result = await pool.query(
-    `SELECT S.* FROM sma S, article_authors A WHERE S.id = A.article_id AND A.author_name LIKE '%${author}%' LIMIT 10`
+    `SELECT S.* FROM sma S, article_authors A WHERE S.id = A.article_id AND A.author_name LIKE '%${author}%' limit 10`
+  );
+
+  let articles = [];
+  let links = [];
+  for (var i = 0; i < result.rows.length; i++) {
+    const article = result.rows[i];
+    const article_id = article.id;
+
+    articles.push(article_id);
+
+    let cites = await pool.query(
+      // `SELECT S.* FROM sma S, (SELECT C.* FROM cites C WHERE C.article_id = ${article_id}) C WHERE S.id = C.cites_article_id`
+      `SELECT S.* 
+                  FROM sma S, 
+                  (SELECT C.* FROM cited_by C WHERE C.article_id = ${article_id}) C 
+                  WHERE S.id = C.cited_by_id`
+    );
+
+    for (var j = 0; j < cites.rows.length; j++) {
+      // {id, abstract, publish_date, title, journal_id, author} = cites[j];
+
+      // let author = await pool.query(
+      //   `SELECT S.*
+      //             FROM sma S, article_authors A
+      //             WHERE S.id = A.article_id
+      //             AND A.author_name = %s`
+      // );
+
+      // citing_articles.push({
+      //   id: id,
+      //   title: title,
+      //   author: "Alex Nou",
+      //   abstract: abstract,
+      //   publish_date: publish_date,
+      //   journal_id: journal_id
+      // })
+      const id = cites.rows[j].id;
+      articles.push(id);
+      links.push({ source: article_id, target: id });
+    }
+  }
+  const nodes = articles.map(id => {
+    return { id: id };
+  });
+
+  console.log("#Nodes: ", nodes.length);
+  console.log("#Links: ", links.length);
+  const simulation = d3
+    .forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(d => d.id))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(0, 0));
+
+  simulation.on("end", () => {
+    console.log("--------------SIMULATION END---------------");
+    // if (!res.headersSent)
+    res.send({ nodes, links });
+  });
+
+  // const client = new Client({
+  //   connectionString: connectionString
+  // });
+  // client.connect();
+
+  // client.query("SELECT NOW()", (err, res) => {
+  //   console.log(err, res);
+  //   client.end();
+  // });
+
+  // const user = await User.findById(req.user._id).select("-password"); // Exclude the password property
+  // res.send(user);
+});
+
+//Get articles within date
+router.get("/get_date_range", async (req, res) => {
+  // Data is retrieved from the json web token
+  console.log("Called Get Date Range");
+
+  // Access the provided 'page' and 'limt' query parameters
+  let startDate = req.query.startDate;
+  let endDate = req.query.endDate;
+  
+  const pool = new Pool({
+    connectionString: connectionString
+  });
+
+  let result = await pool.query(
+    `SELECT S.* FROM sma S WHERE S.publish_date BETWEEN '${startDate}' and '${endDate}' limit 10`
+  );
+
+  let articles = [];
+  let links = [];
+  for (var i = 0; i < result.rows.length; i++) {
+    const article = result.rows[i];
+    const article_id = article.id;
+
+    articles.push(article_id);
+
+    let cites = await pool.query(
+      // `SELECT S.* FROM sma S, (SELECT C.* FROM cites C WHERE C.article_id = ${article_id}) C WHERE S.id = C.cites_article_id`
+      `SELECT S.* 
+                  FROM sma S, 
+                  (SELECT C.* FROM cited_by C WHERE C.article_id = ${article_id}) C 
+                  WHERE S.id = C.cited_by_id`
+    );
+
+    for (var j = 0; j < cites.rows.length; j++) {
+      // {id, abstract, publish_date, title, journal_id, author} = cites[j];
+
+      // let author = await pool.query(
+      //   `SELECT S.*
+      //             FROM sma S, article_authors A
+      //             WHERE S.id = A.article_id
+      //             AND A.author_name = %s`
+      // );
+
+      // citing_articles.push({
+      //   id: id,
+      //   title: title,
+      //   author: "Alex Nou",
+      //   abstract: abstract,
+      //   publish_date: publish_date,
+      //   journal_id: journal_id
+      // })
+      const id = cites.rows[j].id;
+      articles.push(id);
+      links.push({ source: article_id, target: id });
+    }
+  }
+  const nodes = articles.map(id => {
+    return { id: id };
+  });
+
+  console.log("#Nodes: ", nodes.length);
+  console.log("#Links: ", links.length);
+  const simulation = d3
+    .forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(d => d.id))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(0, 0));
+
+  simulation.on("end", () => {
+    console.log("--------------SIMULATION END---------------");
+    // if (!res.headersSent)
+    res.send({ nodes, links });
+  });
+
+  // const client = new Client({
+  //   connectionString: connectionString
+  // });
+  // client.connect();
+
+  // client.query("SELECT NOW()", (err, res) => {
+  //   console.log(err, res);
+  //   client.end();
+  // });
+
+  // const user = await User.findById(req.user._id).select("-password"); // Exclude the password property
+  // res.send(user);
+});
+
+//Get Articles by Keyword
+router.get("/get_keyword", async (req, res) => {
+  // Data is retrieved from the json web token
+  console.log("Called Get Keyword");
+
+  // Access the provided 'page' and 'limt' query parameters
+  let keyword = req.query.keyword
+  
+  const pool = new Pool({
+    connectionString: connectionString
+  });
+
+  let result = await pool.query(
+    `SELECT S.* FROM sma S WHERE S.abstract LIKE '%${keyword}%' limit 10`
   );
 
   let articles = [];
