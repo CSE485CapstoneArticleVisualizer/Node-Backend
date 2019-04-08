@@ -51,6 +51,43 @@ router.get("/get_author", async (req, res) => {
   res.send({ articles, links });
 });
 
+router.get("/get_article_by_id", async (req, res) => {
+  // Data is retrieved from the json web token
+
+  // Access the provided 'page' and 'limt' query parameters
+  let articleID = req.query.article_id;
+
+  console.log("Hello", articleID);
+  const pool = new Pool({
+    connectionString: connectionString
+  });
+
+  let result = await pool.query(
+    `SELECT S.* FROM sma S WHERE S.id = '${articleID}'`
+  );
+
+  let author = await pool.query(
+    `SELECT A.author_name FROM article_authors A WHERE A.article_id = '${articleID}'`
+  );
+
+  // let cited_by = await pool.query(
+  //   `SELECT S.* 
+  //               FROM sma S, 
+  //               (SELECT C.* FROM cited_by C WHERE C.article_id = ${articleId}) C 
+  //               WHERE S.id = C.cited_by_id`
+  // );
+
+  // let cites = await pool.query(
+  //   `SELECT S.* 
+  //               FROM sma S, 
+  //               (SELECT C.* FROM cites C WHERE C.article_id = ${articleId}) C 
+  //               WHERE S.id = C.cites_article_id`
+  // );
+
+
+  res.send({ result, author });
+});
+
 //Get articles within date
 router.get("/get_date_range", async (req, res) => {
   // Data is retrieved from the json web token

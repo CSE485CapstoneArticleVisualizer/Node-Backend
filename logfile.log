@@ -28,3 +28,36 @@
 {"message":"500 - nodes is not defined - /api/users/get_author?author=Alex - GET - ::ffff:127.0.0.1\nStack Trace:\nReferenceError: nodes is not defined\n    at router.get (C:\\Users\\alexn\\Projects\\Node-Backend\\routes\\users.js:65:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)","level":"error"}
 {"message":"Morgan enabled...","level":"info"}
 {"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - column a.id does not exist - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nerror: column a.id does not exist\n    at Connection.parseE (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\node_modules\\pg\\lib\\connection.js:601:11)\n    at Connection.parseMessage (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\node_modules\\pg\\lib\\connection.js:398:19)\n    at Socket.<anonymous> (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\node_modules\\pg\\lib\\connection.js:120:22)\n    at emitOne (events.js:115:13)\n    at Socket.emit (events.js:210:7)\n    at addChunk (_stream_readable.js:264:12)\n    at readableAddChunk (_stream_readable.js:251:11)\n    at Socket.Readable.push (_stream_readable.js:209:10)\n    at TCP.onread (net.js:587:20)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - column a.author_id does not exist - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nerror: column a.author_id does not exist\n    at Connection.parseE (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\node_modules\\pg\\lib\\connection.js:601:11)\n    at Connection.parseMessage (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\node_modules\\pg\\lib\\connection.js:398:19)\n    at Socket.<anonymous> (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\node_modules\\pg\\lib\\connection.js:120:22)\n    at emitOne (events.js:115:13)\n    at Socket.emit (events.js:210:7)\n    at addChunk (_stream_readable.js:264:12)\n    at readableAddChunk (_stream_readable.js:251:11)\n    at Socket.Readable.push (_stream_readable.js:209:10)\n    at TCP.onread (net.js:587:20)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - articleId is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: articleId is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:75:68)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - articleId is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: articleId is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:75:69)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - cited_by is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: cited_by is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:87:30)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - cited_by is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: cited_by is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:88:30)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"500 - cited_by is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: cited_by is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:88:30)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - articleId is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: articleId is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:76:69)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - articleId is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: articleId is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:76:68)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
