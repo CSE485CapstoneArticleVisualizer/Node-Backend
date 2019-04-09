@@ -35,7 +35,7 @@ router.get("/get_author", async (req, res) => {
       `SELECT S.* 
                   FROM sma S, 
                   (SELECT C.* FROM cited_by C WHERE C.article_id = ${article_id}) C 
-                  WHERE S.id = C.cited_by_id`
+                  WHERE S.id = C.cited_by_id limit 10`
     );
 
     for (var j = 0; j < cites.rows.length; j++) {

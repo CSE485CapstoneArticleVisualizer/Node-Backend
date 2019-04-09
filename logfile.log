@@ -61,3 +61,5 @@
 {"message":"500 - articleId is not defined - /api/users/get_article_by_id?article_id=301783 - GET - ::1\nStack Trace:\nReferenceError: articleId is not defined\n    at router.get (C:\\Users\\Geoffrey\\desktop\\Node-Backend\\routes\\users.js:76:68)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error"}
 {"message":"Morgan enabled...","level":"info"}
 {"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
