@@ -16,18 +16,17 @@ const errorStackFormat = winston.format(info => {
 module.exports = function (app) {
     // Handle Exceptions
     // (DEPRECATED) winston.handleExceptions(new winston.transports.File({ filename: 'uncaughtExceptions.log' }))
-    winston.exceptions.handle(
-        new winston.transports.File({ filename: 'uncaughtExceptions.log', format: winston.format.simple() }),
-        new winston.transports.Console({ format: winston.format.simple(), colorize: true, prettyPrint: true })
-    )
+    // winston.exceptions.handle(
+    //     new winston.transports.File({ filename: 'uncaughtExceptions.log', format: winston.format.simple() }),
+    //     new winston.transports.Console({ format: winston.format.simple(), colorize: true, prettyPrint: true })
+    // )
 
     // Hack to handle rejections as an exception
     process.on('unhandledRejection', (rej) => {
         throw rej;
     })
 
-    // Add file transport and mongodb transport
-    
+    // // Add file transport and mongodb transport
     winston.add(new winston.transports.Console({ format: winston.format.combine(errorStackFormat(), winston.format.simple()), colorize: true, prettyPrint: true }))
     winston.add(new winston.transports.File({ filename: 'logfile.log' }));
     // winston.add(new winston.transports.MongoDB({

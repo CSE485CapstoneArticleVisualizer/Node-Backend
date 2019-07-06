@@ -8,6 +8,7 @@ module.exports = function(err, req, res, next) {
   ); // Metadata is in second argument
   // winston.log('error', err.message, err);
 
+  // other levels include
   // error
   // warn
   // info

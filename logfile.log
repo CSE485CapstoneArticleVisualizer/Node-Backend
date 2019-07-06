@@ -28,3 +28,18 @@
 {"message":"500 - nodes is not defined - /api/users/get_author?author=Alex - GET - ::ffff:127.0.0.1\nStack Trace:\nReferenceError: nodes is not defined\n    at router.get (C:\\Users\\alexn\\Projects\\Node-Backend\\routes\\users.js:65:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)","level":"error"}
 {"message":"Morgan enabled...","level":"info"}
 {"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"500 - Failed to lookup view \"index\" in views directory \"./views\" - / - GET - ::ffff:127.0.0.1\nStack Trace:\nError: Failed to lookup view \"index\" in views directory \"./views\"\n    at Function.render (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\application.js:580:17)\n    at ServerResponse.render (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\response.js:1008:7)\n    at router.get (C:\\Users\\Alex\\Projects\\Node-Backend\\routes\\home.js:11:9)\n    at newFn (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Route.dispatch (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\route.js:112:3)\n    at newFn (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\index.js:281:22\n    at Function.process_params (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\index.js:335:12)\n    at next (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\index.js:275:10)\n    at timelog (C:\\Users\\Alex\\Projects\\Node-Backend\\routes\\home.js:6:5)\n    at newFn (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\Alex\\Projects\\Node-Backend\\node_modules\\express\\lib\\router\\index.js:317:13)","level":"error"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}
+{"message":"Morgan enabled...","level":"info"}
+{"message":"Listening to port 3900","level":"info"}

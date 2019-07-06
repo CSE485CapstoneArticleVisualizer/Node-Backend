@@ -1,12 +1,9 @@
-const auth = require("../middleware/auth"); // authorization
 const _ = require("lodash");
-const { User, validate } = require("../models/user");
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const { Pool, Client } = require("pg");
 const connectionString = "postgresql://stephen:stephen@localhost:5434/stephen";
-const d3 = require("d3");
+// const d3 = require("d3");
 
 //Get Author
 router.get("/get_author", async (req, res) => {
@@ -140,34 +137,6 @@ router.get("/get_keyword", async (req, res) => {
   console.log("#Links: ", links.length);
 
   res.send({ articles, links });
-});
-
-router.get("/me", async (req, res) => {
-  // Data is retrieved from the json web token
-  throw new Error("Failed at /me");
-  const user = await User.findById(req.user._id).select("-password"); // Exclude the password property
-  res.send(user);
-});
-
-router.post("/", async (req, res, next) => {
-  const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  let user = await User.findOne({ email: req.body.email });
-  if (user) return res.status(400).send("User already registered");
-
-  user = new User(_.pick(req.body, ["name", "email", "password"]));
-
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
-
-  await user.save();
-  const token = user.generateAuthToken();
-
-  res
-    .header("x-auth-token", token)
-    .header("access-control-expose-headers", "x-auth-token")
-    .send(_.pick(user, ["_id", "name", "email"]));
 });
 
 module.exports = router;

@@ -8,7 +8,7 @@ router.use(function timelog (req, res, next) {
 
 router.get('/', (req, res) => {
     //res.send('Hello World');
-    res.render('index', { title: "My Express App", message: "Hello World!"})
+    res.render('index', { title: "Capstone Project", message: "Hello user. The information you require is at the endpoint /api/data"})
 });
 
 module.exports = router;
