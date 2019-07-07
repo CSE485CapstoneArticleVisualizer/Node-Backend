@@ -32,7 +32,7 @@ router.get("/get_author", async (req, res) => {
       `SELECT S.* 
                   FROM sma S, 
                   (SELECT C.* FROM cited_by C WHERE C.article_id = ${article_id}) C 
-                  WHERE S.id = C.cited_by_id`
+                  WHERE S.id = C.cited_by_id limit 10`
     );
 
     for (var j = 0; j < cites.rows.length; j++) {
@@ -46,6 +46,85 @@ router.get("/get_author", async (req, res) => {
   console.log("#Links: ", links.length);
 
   res.send({ articles, links });
+});
+
+router.get("/get_article_by_id", async (req, res) => {
+  // Data is retrieved from the json web token
+
+  // Access the provided 'page' and 'limt' query parameters
+  let articleID = req.query.article_id;
+
+  const pool = new Pool({
+    connectionString: connectionString
+  });
+
+  let result = await pool.query(
+    `SELECT S.* FROM sma S WHERE S.id = '${articleID}'`
+  );
+  let title;
+  let abstract;
+  let published_date;
+  let journal_id;
+
+  for (var i = 0; i < result.rows.length; i++) {
+    title = result.rows[i].title;
+    abstract = result.rows[i].abstract;
+    published_date = result.rows[i].publish_date;
+    journal_id = result.rows[i].journal_id;
+  }
+  let journal = null;
+  if (journal_id !== null) {
+    let journalInfo = await pool.query(
+      `SELECT J.name FROM journals J WHERE J.id = '${journal_id}'`
+    );
+
+    for (var i = 0; i < journalInfo.rows.length; i++) {
+      journal = journalInfo.rows[i].name;
+    }
+  }
+
+  let author = await pool.query(
+    `SELECT A.author_name FROM article_authors A WHERE A.article_id = '${articleID}'`
+  );
+
+  authors = [];
+  for (var i = 0; i < author.rows.length; i++) {
+    let name = author.rows[i].author_name;
+    authors.push(name);
+  }
+
+  let cited_by = await pool.query(
+    `SELECT S.title 
+                FROM sma S, 
+                (SELECT C.* FROM cited_by C WHERE C.article_id = ${articleID}) C 
+                WHERE S.id = C.cited_by_id`
+  );
+
+  citations = [];
+  for (var i = 0; i < cited_by.rows.length; i++) {
+    const citation = cited_by.rows[i].title;
+    citations.push(citation);
+  }
+
+
+  let cites = await pool.query(
+    `SELECT S.title 
+                FROM sma S, 
+                (SELECT C.* FROM cites C WHERE C.article_id = ${articleID}) C 
+                WHERE S.id = C.cites_article_id`
+  );
+
+  references = [];
+  for (var i = 0; i < cites.rows.length; i++) {
+    const reference = cites.rows[i].title;
+    references.push(reference);
+  }
+
+  let link = "http://google.com/search?q=" + title;
+
+
+  // res.send({ title, abstract, authors, citations, references, date });
+  res.send({ title, abstract, authors, citations, references, published_date, journal, link });
 });
 
 //Get articles within date
